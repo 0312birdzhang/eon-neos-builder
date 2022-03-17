@@ -20,9 +20,7 @@ jobs:
     
     - name: Build
       run: |
-        pwd
-        cd /home/runner/work/eon-neos-builder/eon-neos-builder
         ls -al
-        #chmod +x run_ci.sh
-        #sudo run_ci.sh
+        sudo chmod +x ./run_ci.sh
+        sudo ./run_ci.sh
       shell: bash
