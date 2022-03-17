@@ -1,4 +1,4 @@
-name: Build Ubports
+name: Build System
 
 on: workflow_dispatch
 
