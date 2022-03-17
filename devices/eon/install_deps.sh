@@ -13,8 +13,6 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 
 # Basic dependencies
 sudo apt-get update || true
-sudo apt-get remove -y openjdk-11-jdk openjdk-11-jre
-#sudo apt-get install -y cpio git-core git-lfs gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip python python-requests bc android-tools-fsutils openjdk-8-jdk openjdk-8-jre android-sdk nodejs yarn
 sudo apt-get install -y cpio git git-lfs gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip python3-requests bc android-sdk-libsparse-utils android-sdk-ext4-utils openjdk-8-jdk openjdk-8-jre android-sdk yarnpkg nodejs
 
 # Clean up if the cmdtest version of yarn is already installed, then make sure yarnpkg is the system default yarn
@@ -28,7 +26,10 @@ echo "java version: ${JAVA_VERSION}"
 echo "javac version: ${JAVAC_VERSION}"
 if [ $JAVA_VERSION != "8" ] || [ $JAVAC_VERSION != "8" ]; then
   echo "java / javac version 8 must be selected with \"sudo update-alternatives --config [java/javac]\" before proceeding"
-  exit
+  sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-8-openjdk-amd64/bin/java 300  
+  sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac 300  
+  sudo update-alternatives --install /usr/bin/javah javah /usr/lib/jvm/java-8-openjdk-amd64/bin/javah 300
+  sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/java-8-openjdk-amd64/bin/jar 300
 fi
 
 # Additional setup for Android SDK environment and toolset
