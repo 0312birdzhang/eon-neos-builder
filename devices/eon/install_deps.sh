@@ -26,10 +26,6 @@ echo "java version: ${JAVA_VERSION}"
 echo "javac version: ${JAVAC_VERSION}"
 if [ $JAVA_VERSION != "8" ] || [ $JAVAC_VERSION != "8" ]; then
   echo "java / javac version 8 must be selected with \"sudo update-alternatives --config [java/javac]\" before proceeding"
-  sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/java-8-openjdk-amd64/bin/java 300  
-  sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac 300  
-  sudo update-alternatives --install /usr/bin/javah javah /usr/lib/jvm/java-8-openjdk-amd64/bin/javah 300
-  sudo update-alternatives --install /usr/bin/jar jar /usr/lib/jvm/java-8-openjdk-amd64/bin/jar 300
 fi
 
 # Additional setup for Android SDK environment and toolset

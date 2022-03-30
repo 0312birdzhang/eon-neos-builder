@@ -29,5 +29,10 @@ cd $DIR/mindroid/system
 $TOOLS/repo init -u https://github.com/commaai/android.git -b "repeatable-build-mindroid"
 $TOOLS/repo sync -c -j$JOBS
 
+# jdk
+# /usr/lib/jvm/java-8-openjdk-amd64/
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PWD/bin:$PATH
 (source build/envsetup.sh && breakfast oneplus3 && make -j$JOBS)
